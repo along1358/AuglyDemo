@@ -1,0 +1,52 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:3.5.3"
+        classpath "com.tencent.tinker:tinker-patch-gradle-plugin:1.9.1"
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+
+ext {
+    dependsVersion = [
+            "retrofit" : "2.6.2",
+            "rxandroid": "3.0.2",
+            "rxjava"   : "3.1.5",
+            "gson"     : "2.8.9",
+            "AppUpdate": "0.2.6",
+            "tinker"   : "1.9.14.19",
+            "multidex" : "1.0.3",
+    ]
+
+    depends = [
+            "retrofit" : "com.squareup.retrofit2:retrofit:${dependsVersion.retrofit}",
+            "rxandroid": "io.reactivex.rxjava3:rxandroid:${dependsVersion.rxandroid}",
+            "rxjava"   : "io.reactivex.rxjava3:rxjava:${dependsVersion.rxjava}",
+            "gson"     : "com.google.code.gson:gson:${dependsVersion.gson}",
+            "appupdate": "com.github.ZuoHailong:AppUpdate:${dependsVersion.AppUpdate}",
+            "tinker"   : "com.tencent.tinker:tinker-android-lib:${dependsVersion.tinker}",
+            "multidex" : "com.android.support:multidex:${dependsVersion.multidex}",
+    ]
+
+    annotationProcessors = [
+            "tinker": "com.tencent.tinker:tinker-android-anno:1.9.1",
+    ]
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
