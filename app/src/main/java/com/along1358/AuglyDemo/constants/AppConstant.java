@@ -6,7 +6,7 @@ import java.io.File;
 
 public class AppConstant {
     //启停版本更新
-    public static final boolean ENABLE_UPDATE = true;
+    public static final boolean ENABLE_UPDATE = false;
 
     //启停热修复,启用热修复需先启用版本更新
     public static final boolean ENABLE_PATCH = false;

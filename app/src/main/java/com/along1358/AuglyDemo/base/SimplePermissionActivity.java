@@ -15,9 +15,11 @@ public class SimplePermissionActivity extends Activity {
     private final static int REQUEST_CODE = 0x01;
     private PermissionCallback callback;
 
-    protected void requestPermissions(@NonNull String[] permissions) {
+    protected void requestPermissions(@NonNull String[] permissions, PermissionCallback callback) {
         if (permissions == null || permissions.length == 0)
             throw new NullPointerException("no request permissions?");
+
+        setPermissionCallback(callback);
 
         List<String> permissionsRequest = new ArrayList();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -61,13 +63,13 @@ public class SimplePermissionActivity extends Activity {
         }
     }
 
-    public interface PermissionCallback {
+    protected interface PermissionCallback {
         void onAllGranted();
 
         void onDenied(List<String> deniedPermissions);
     }
 
-    protected void setPermissionCallback(PermissionCallback callback) {
+    private void setPermissionCallback(PermissionCallback callback) {
         this.callback = callback;
     }
 }

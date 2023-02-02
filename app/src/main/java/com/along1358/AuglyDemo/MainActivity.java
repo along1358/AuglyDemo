@@ -32,7 +32,10 @@ public class MainActivity extends SimplePermissionActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setPermissionCallback(new PermissionCallback() {
+        requestPermissions(new String[]{
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+        }, new PermissionCallback() {
             @Override
             public void onAllGranted() {
                 if (AppConstant.ENABLE_UPDATE)
@@ -43,10 +46,6 @@ public class MainActivity extends SimplePermissionActivity {
             public void onDenied(List<String> deniedPermissions) {
 
             }
-        });
-        requestPermissions(new String[]{
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE
         });
     }
 
