@@ -2,28 +2,11 @@ package com.along1358.AuglyDemo;
 
 import android.Manifest;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.along1358.AuglyDemo.base.SimplePermissionActivity;
-import com.along1358.AuglyDemo.constants.AppConstant;
-import com.along1358.AuglyDemo.service.patch.DownloadService;
-import com.along1358.AuglyDemo.service.patch.PatchInfoService;
-import com.along1358.AuglyDemo.service.retrofit.CheckInfoResponseBody;
-import com.along1358.AuglyDemo.service.retrofit.DownloadListener;
 import com.along1358.AuglyDemo.service.update.UpdateHelper;
-import com.along1358.AuglyDemo.service.update.UpdateInfoService;
-import com.along1358.AuglyDemo.tinkerUtils.PatchHelper;
-import com.along1358.AuglyDemo.tinkerUtils.TinkerHelper;
-import com.along1358.AuglyDemo.utils.AppSPUtils;
-import com.hailong.appupdate.AppUpdateManager;
-import com.tencent.tinker.lib.tinker.Tinker;
-import com.tencent.tinker.loader.shareutil.ShareConstants;
 
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends SimplePermissionActivity {
 
@@ -38,8 +21,7 @@ public class MainActivity extends SimplePermissionActivity {
         }, new PermissionCallback() {
             @Override
             public void onAllGranted() {
-                if (AppConstant.ENABLE_UPDATE)
-                    UpdateHelper.getInstance().updateInfoCheck();
+                UpdateHelper.getInstance().update();
             }
 
             @Override

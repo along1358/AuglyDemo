@@ -21,6 +21,7 @@ public class PatchHelper {
     }
 
     public void patch() {
+        if (!AppConstant.ENABLE_PATCH) return;
         //已加载过补丁，查询是否有新补丁
         if (TinkerHelper.getInstance().isTinkerLoaded()) {
             PatchInfoService.getInstance().exec(new Callback<CheckInfoResponseBody>() {

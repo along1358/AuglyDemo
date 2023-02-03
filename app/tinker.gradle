@@ -1,5 +1,5 @@
 def bakPath = file("${buildDir}/bakApk/")
-def oldApkName = "app-debug-202302021619"
+def oldApkName = "app-debug-V1.0-202302031008"
 
 ext {
     // for some reason, you may want to ignore tinkerBuild, such as instant run debug build?
@@ -227,7 +227,7 @@ if (buildWithTinker()) {
             /**
              * 补丁版本通过packageConfig
              */
-            configField("patchVersion", "1.0.1")
+            configField("patchVersion", "1.0.2")
         }
         //或者您可以添加外部的配置文件，或从旧apk获取元值
         //project.tinkerPatch.packageConfig.configField("test1", project.tinkerPatch.packageConfig.getMetaDataFromOldApk("Test"))
@@ -273,7 +273,7 @@ if (buildWithTinker()) {
                 it.doLast {
                     copy {
                         def fileNamePrefix = "${project.name}-${variant.baseName}"
-                        def newFileNamePrefix = hasFlavors ? "${fileNamePrefix}" : "${fileNamePrefix}-${date}"
+                        def newFileNamePrefix = hasFlavors ? "${fileNamePrefix}" : "${fileNamePrefix}-V${variant.versionName}-${date}"
 
                         def destPath = hasFlavors ? file("${bakPath}/${project.name}-${date}/${variant.flavorName}") : bakPath
 

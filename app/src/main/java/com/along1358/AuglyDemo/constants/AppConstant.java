@@ -6,10 +6,10 @@ import java.io.File;
 
 public class AppConstant {
     //启停版本更新
-    public static final boolean ENABLE_UPDATE = false;
+    public static final boolean ENABLE_UPDATE = true;
 
     //启停热修复,启用热修复需先启用版本更新
-    public static final boolean ENABLE_PATCH = false;
+    public static final boolean ENABLE_PATCH = true;
 
     public static final String SP_FILE_NAME = "sp";
     public static final String SP_KEY_PATCH_INFO_VERSION_CODE = "patchInfoVersionCode";

@@ -8,6 +8,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 public class PatchInfoService {
     private static class Holder {

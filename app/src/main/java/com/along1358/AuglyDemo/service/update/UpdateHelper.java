@@ -29,7 +29,8 @@ public class UpdateHelper {
         return original.split(separator);
     }
 
-    public void updateInfoCheck() {
+    public void update() {
+        if (!AppConstant.ENABLE_UPDATE) return;
         UpdateInfoService.getInstance().exec(new Callback<CheckInfoResponseBody>() {
             @Override
             public void onResponse(Call<CheckInfoResponseBody> call, Response<CheckInfoResponseBody> response) {
@@ -49,15 +50,13 @@ public class UpdateHelper {
                     }
 
                 } else { //未有新版本，尝试打补丁
-                    if (AppConstant.ENABLE_PATCH)
-                        PatchHelper.getInstance().patch();
+                    PatchHelper.getInstance().patch();
                 }
             }
 
             //未上传新版本，尝试打补丁
             @Override
             public void onFailure(Call<CheckInfoResponseBody> call, Throwable t) {
-                if (AppConstant.ENABLE_PATCH)
                     PatchHelper.getInstance().patch();
             }
         });
