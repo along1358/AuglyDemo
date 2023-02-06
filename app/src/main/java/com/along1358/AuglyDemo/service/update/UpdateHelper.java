@@ -30,7 +30,6 @@ public class UpdateHelper {
     }
 
     public void update() {
-        if (!AppConstant.ENABLE_UPDATE) return;
         UpdateInfoService.getInstance().exec(new Callback<CheckInfoResponseBody>() {
             @Override
             public void onResponse(Call<CheckInfoResponseBody> call, Response<CheckInfoResponseBody> response) {

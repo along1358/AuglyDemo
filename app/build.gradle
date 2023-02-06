@@ -47,6 +47,19 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    flavorDimensions "network"
+    productFlavors {
+        standalone {
+            dimension "network"
+            buildConfigField("boolean", "USE_NETWORK", "false")
+        }
+        standard {
+            dimension "network"
+            buildConfigField("boolean", "USE_NETWORK", "true")
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

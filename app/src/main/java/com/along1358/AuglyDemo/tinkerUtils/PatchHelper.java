@@ -1,6 +1,5 @@
 package com.along1358.AuglyDemo.tinkerUtils;
 
-import com.along1358.AuglyDemo.BuildConfig;
 import com.along1358.AuglyDemo.constants.AppConstant;
 import com.along1358.AuglyDemo.service.patch.DownloadService;
 import com.along1358.AuglyDemo.service.patch.PatchInfoService;
@@ -31,7 +30,7 @@ public class PatchHelper {
                     String patchVersion = TinkerHelper.getInstance().getPatchVersion();
                     String tinkerId = TinkerHelper.getInstance().getTinkerId();
                     if (!patchVersion.equals(responseBody.getVersionName())
-                            && tinkerId.equals("tinker_id_" + BuildConfig.TINKER_ID)) {
+                            && tinkerId.equals(AppConstant.TINKER_ID)) {
                         downloadPatch(responseBody);
                     }
                 }

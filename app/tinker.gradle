@@ -3,7 +3,7 @@ def oldApkName = "app-debug-V1.0-202302031008"
 
 ext {
     // for some reason, you may want to ignore tinkerBuild, such as instant run debug build?
-    tinkerEnabled = true
+    tinkerEnabled = false
 
     // 基准apk路径
     tinkerOldApkPath = "${bakPath}/${oldApkName}.apk"

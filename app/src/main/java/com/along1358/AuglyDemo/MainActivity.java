@@ -21,7 +21,8 @@ public class MainActivity extends SimplePermissionActivity {
         }, new PermissionCallback() {
             @Override
             public void onAllGranted() {
-                UpdateHelper.getInstance().update();
+                if (BuildConfig.USE_NETWORK)
+                    UpdateHelper.getInstance().update();
             }
 
             @Override
