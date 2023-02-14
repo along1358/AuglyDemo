@@ -12,7 +12,6 @@ public class AppConstant {
 
     //sharedPreferences
     public static final String SP_FILE_NAME = "sp";
-    public static final String SP_KEY_PATCH_INFO_VERSION_CODE = "patchInfoVersionCode";
 
     //tinker
     public static final String EX_STORAGE_ROOT = Environment.getExternalStorageDirectory().getAbsolutePath();
