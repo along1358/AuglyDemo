@@ -1,9 +1,7 @@
-package com.along1358.AuglyDemo.service.patch;
+package com.along1358.AuglyDemo.service;
 
 import com.along1358.AuglyDemo.constants.ServiceConstant;
-import com.along1358.AuglyDemo.service.CheckInfoResponseBody;
-import com.along1358.AuglyDemo.service.DownloadListener;
-import com.along1358.AuglyDemo.service.DownloadProgressListener;
+import com.along1358.AuglyDemo.service.patch.DownloadResponseBody;
 import com.along1358.AuglyDemo.retrofit.adapter.rxjava3.RxJava3CallAdapterFactory;
 import com.along1358.AuglyDemo.retrofit.converter.gson.GsonConverterFactory;
 
@@ -37,25 +35,16 @@ import retrofit2.http.Header;
 import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
-public class DownloadService {
+public class DownloadTask {
     private DownloadInfo downloadInfo;
     private int progress = -1;
     private DownLoadRequest request;
 
     private Disposable subscribe;
 
-    public DownloadService() {
+    public DownloadTask() {
         downloadInfo = new DownloadInfo();
     }
-
-    private static class Holder {
-        private static DownloadService instance = new DownloadService();
-    }
-
-    public static DownloadService getInstance() {
-        return DownloadService.Holder.instance;
-    }
-
 
     interface DownLoadRequest {
         @Streaming
@@ -63,8 +52,8 @@ public class DownloadService {
         Observable<ResponseBody> download(@Header("RANGE") String start, @Url String url);
     }
 
-    public void download(CheckInfoResponseBody info, String path, DownloadListener listener) {
-        downloadInfo.url = info.getApkUrl();
+    public void download(String url, String path, DownloadListener listener) {
+        downloadInfo.url = url;
         downloadInfo.savePath = path;
 
         final DownloadInterceptor interceptor = new DownloadInterceptor(new DownloadProgressListener() {
@@ -223,13 +212,13 @@ public class DownloadService {
             return observable.zipWith(Observable.range(1, count + 1), new BiFunction<Throwable, Integer, Wrapper>() {
 
                 @Override
-                public RetryWhenNetworkException.Wrapper apply(Throwable throwable, Integer integer) throws Exception {
+                public Wrapper apply(Throwable throwable, Integer integer) throws Exception {
                     //压缩规则 合并后的结果是一个Observable<Wrapper>
-                    return new RetryWhenNetworkException.Wrapper(throwable, integer);
+                    return new Wrapper(throwable, integer);
                 }
-            }).flatMap(new Function<RetryWhenNetworkException.Wrapper, ObservableSource<?>>() {
+            }).flatMap(new Function<Wrapper, ObservableSource<?>>() {
                 @Override
-                public ObservableSource<?> apply(RetryWhenNetworkException.Wrapper wrapper) throws Exception {
+                public ObservableSource<?> apply(Wrapper wrapper) throws Exception {
                     //转换规则
                     if ((wrapper.throwable instanceof ConnectException
                             || wrapper.throwable instanceof SocketTimeoutException

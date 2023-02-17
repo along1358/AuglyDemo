@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">@string/appName</string>
+    <string name="dialog_msg_downloading">正在下载</string>
 </resources>

@@ -1,14 +1,13 @@
 package com.along1358.AuglyDemo.service.patch;
 
 import com.along1358.AuglyDemo.constants.ServiceConstant;
-import com.along1358.AuglyDemo.service.retrofit.CheckInfoResponseBody;
-import com.along1358.AuglyDemo.service.retrofit.converter.gson.GsonConverterFactory;
+import com.along1358.AuglyDemo.service.CheckInfoResponseBody;
+import com.along1358.AuglyDemo.retrofit.converter.gson.GsonConverterFactory;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 
 public class PatchInfoService {
     private static class Holder {

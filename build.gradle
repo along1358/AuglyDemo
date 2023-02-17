@@ -17,11 +17,14 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://jitpack.io' }
+        maven { url "https://raw.githubusercontent.com/Pgyer/mvn_repo_pgyer/master" }
     }
 }
 
 
 ext {
+    usePgySDK = true
+
     dependsVersion = [
             "retrofit" : "2.6.2",
             "rxandroid": "3.0.2",
@@ -30,17 +33,33 @@ ext {
             "AppUpdate": "0.2.6",
             "tinker"   : "1.9.14.19",
             "multidex" : "1.0.3",
+            "pgysdk"   : "2.8.1"
     ]
 
-    depends = [
-            "retrofit" : "com.squareup.retrofit2:retrofit:${dependsVersion.retrofit}",
-            "rxandroid": "io.reactivex.rxjava3:rxandroid:${dependsVersion.rxandroid}",
-            "rxjava"   : "io.reactivex.rxjava3:rxjava:${dependsVersion.rxjava}",
-            "gson"     : "com.google.code.gson:gson:${dependsVersion.gson}",
-            "appupdate": "com.github.ZuoHailong:AppUpdate:${dependsVersion.AppUpdate}",
-            "tinker"   : "com.tencent.tinker:tinker-android-lib:${dependsVersion.tinker}",
-            "multidex" : "com.android.support:multidex:${dependsVersion.multidex}",
-    ]
+    if (usePgySDK) {
+        depends = [
+                "retrofit" : "com.squareup.retrofit2:retrofit:${dependsVersion.retrofit}",
+                "rxandroid": "io.reactivex.rxjava3:rxandroid:${dependsVersion.rxandroid}",
+                "rxjava"   : "io.reactivex.rxjava3:rxjava:${dependsVersion.rxjava}",
+                "gson"     : "com.google.code.gson:gson:${dependsVersion.gson}",
+                "appupdate": "com.github.ZuoHailong:AppUpdate:${dependsVersion.AppUpdate}",
+                "tinker"   : "com.tencent.tinker:tinker-android-lib:${dependsVersion.tinker}",
+                "multidex" : "com.android.support:multidex:${dependsVersion.multidex}",
+
+                "pgysdk"   : "com.pgyersdk:sdk:${dependsVersion.pgysdk}"
+        ]
+    } else {
+        depends = [
+                "retrofit" : "com.squareup.retrofit2:retrofit:${dependsVersion.retrofit}",
+                "rxandroid": "io.reactivex.rxjava3:rxandroid:${dependsVersion.rxandroid}",
+                "rxjava"   : "io.reactivex.rxjava3:rxjava:${dependsVersion.rxjava}",
+                "gson"     : "com.google.code.gson:gson:${dependsVersion.gson}",
+                "appupdate": "com.github.ZuoHailong:AppUpdate:${dependsVersion.AppUpdate}",
+                "tinker"   : "com.tencent.tinker:tinker-android-lib:${dependsVersion.tinker}",
+                "multidex" : "com.android.support:multidex:${dependsVersion.multidex}",
+        ]
+    }
+
 
     annotationProcessors = [
             "tinker": "com.tencent.tinker:tinker-android-anno:1.9.1",

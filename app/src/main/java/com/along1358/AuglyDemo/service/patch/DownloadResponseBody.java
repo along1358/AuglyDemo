@@ -1,5 +1,7 @@
 package com.along1358.AuglyDemo.service.patch;
 
+import com.along1358.AuglyDemo.service.DownloadProgressListener;
+
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
@@ -14,10 +16,10 @@ import okio.Source;
 
 public class DownloadResponseBody extends ResponseBody {
     private ResponseBody responseBody;
-    private DownloadService.DownloadProgressListener listener;
+    private DownloadProgressListener listener;
     private BufferedSource bufferedSource;
 
-    public DownloadResponseBody(ResponseBody responseBody, DownloadService.DownloadProgressListener listener) {
+    public DownloadResponseBody(ResponseBody responseBody, DownloadProgressListener listener) {
         this.responseBody = responseBody;
         this.listener = listener;
     }
