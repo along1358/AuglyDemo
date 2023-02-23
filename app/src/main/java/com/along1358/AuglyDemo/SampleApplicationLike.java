@@ -26,6 +26,7 @@ import com.along1358.AuglyDemo.tinker.log.MyLogImp;
 import com.along1358.AuglyDemo.tinker.util.SampleApplicationContext;
 import com.along1358.AuglyDemo.tinker.util.TinkerManager;
 import com.along1358.AuglyDemo.utils.AppUtils;
+import com.along1358.AuglyDemo.utils.ContextUtils;
 import com.tencent.tinker.anno.DefaultLifeCycle;
 import com.tencent.tinker.entry.ApplicationLifeCycle;
 import com.tencent.tinker.entry.DefaultApplicationLike;
@@ -105,6 +106,6 @@ public class SampleApplicationLike extends DefaultApplicationLike {
     @Override
     public void onCreate() {
         super.onCreate();
-        AppUtils.init(getApplication());
+        ContextUtils.init(getApplication());
     }
 }

@@ -1,6 +1,7 @@
 package com.along1358.AuglyDemo.tinker;
 
 import com.along1358.AuglyDemo.utils.AppUtils;
+import com.along1358.AuglyDemo.utils.ContextUtils;
 import com.tencent.tinker.lib.tinker.Tinker;
 import com.tencent.tinker.lib.tinker.TinkerInstaller;
 import com.tencent.tinker.loader.shareutil.ShareConstants;
@@ -9,7 +10,7 @@ public class TinkerHelper {
     private Tinker tinker;
 
     public TinkerHelper() {
-        tinker = Tinker.with(AppUtils.getApp());
+        tinker = Tinker.with(ContextUtils.getApp());
     }
 
     public static TinkerHelper getInstance() {
@@ -25,7 +26,7 @@ public class TinkerHelper {
     }
 
     public void loadPatch(String path) {
-        TinkerInstaller.onReceiveUpgradePatch(AppUtils.getApp(), path);
+        TinkerInstaller.onReceiveUpgradePatch(ContextUtils.getApp(), path);
     }
 
     public String getTinkerId() {

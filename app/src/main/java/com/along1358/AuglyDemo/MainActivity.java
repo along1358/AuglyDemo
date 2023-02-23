@@ -57,12 +57,12 @@ public class MainActivity extends SimplePermissionActivity {
             public void onUpdateAvailable(String s) {
                 final AppBean appBean = getAppBeanFromString(s);
                 new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("发现新版本")
+                        .setTitle(R.string.dialog_title)
                         .setMessage(appBean.getReleaseNote())
-                        .setPositiveButton("取消", null)
+                        .setPositiveButton(R.string.txt_cancel, null)
 
                         .setNegativeButton(
-                                "确定",
+                                R.string.txt_update,
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {

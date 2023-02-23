@@ -7,7 +7,7 @@ import com.along1358.AuglyDemo.constants.AppConstant;
 
 public class SPUtils {
     public static <T> void set(String key, T value) {
-        SharedPreferences sp = AppUtils.getApp().getSharedPreferences(AppConstant.SP_FILE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = ContextUtils.getApp().getSharedPreferences(AppConstant.SP_FILE_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = sp.edit();
         if (value instanceof Integer)
             edit.putInt(key, (Integer) value);
@@ -19,7 +19,7 @@ public class SPUtils {
     }
 
     public static <T> T get(String key, T defValue) {
-        SharedPreferences sp = AppUtils.getApp().getSharedPreferences(AppConstant.SP_FILE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = ContextUtils.getApp().getSharedPreferences(AppConstant.SP_FILE_NAME, Context.MODE_PRIVATE);
         Object ret = null;
         if (defValue instanceof Integer)
             ret = sp.getInt(key, (Integer) defValue);
@@ -31,7 +31,7 @@ public class SPUtils {
     }
 
     public static void delete(String key) {
-        SharedPreferences sp = AppUtils.getApp().getSharedPreferences(AppConstant.SP_FILE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = ContextUtils.getApp().getSharedPreferences(AppConstant.SP_FILE_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = sp.edit();
         edit.remove(key);
         edit.commit();
