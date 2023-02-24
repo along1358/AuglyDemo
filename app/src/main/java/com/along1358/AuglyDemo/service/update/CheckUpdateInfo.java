@@ -1,5 +1,6 @@
 package com.along1358.AuglyDemo.service.update;
 
+import com.along1358.AuglyDemo.BuildConfig;
 import com.along1358.AuglyDemo.constants.ServiceConstant;
 import com.along1358.AuglyDemo.retrofit.converter.gson.GsonConverterFactory;
 
@@ -26,7 +27,7 @@ public class CheckUpdateInfo {
     public void exec(int curVerCode, String appKey, Callback<UpdateInfoResponseBody> callback) {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(ServiceConstant.BASE_URL_XUpdateService)
+                .baseUrl(BuildConfig.ENV_TEST ? ServiceConstant.BASE_URL_XUpdateService_ENV_TEST : ServiceConstant.BASE_URL_XUpdateService_ENV_PRODUSE)
                 .build();
         CheckUpdateInfo.UpdateInfoRequest request = retrofit.create(CheckUpdateInfo.UpdateInfoRequest.class);
         request.getUpdateInfo(curVerCode, appKey).enqueue(callback);

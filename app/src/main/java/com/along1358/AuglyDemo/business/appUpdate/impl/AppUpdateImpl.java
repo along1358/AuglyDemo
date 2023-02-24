@@ -12,7 +12,7 @@ import com.along1358.AuglyDemo.constants.AppConstant;
 import com.along1358.AuglyDemo.constants.ServiceConstant;
 import com.along1358.AuglyDemo.service.update.CheckUpdateInfo;
 import com.along1358.AuglyDemo.service.update.UpdateInfoResponseBody;
-import com.along1358.AuglyDemo.business.appUpdate.UpdateManager;
+import com.along1358.AuglyDemo.service.update.UpdateManager;
 import com.along1358.AuglyDemo.utils.ContextUtils;
 import com.pgyersdk.javabean.AppBean;
 import com.pgyersdk.update.PgyUpdateManager;

@@ -118,7 +118,7 @@ public class DownloadService {
                 .client(builder.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-                .baseUrl(ServiceConstant.BASE_URL)
+                .baseUrl(ServiceConstant.BASE_URL_LOCAL_TEST)
                 .build();
         if (request == null) {
             request = retrofit.create(DownLoadRequest.class);

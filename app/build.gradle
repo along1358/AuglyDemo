@@ -51,8 +51,18 @@ android {
         }
     }
 
-    flavorDimensions "network"
+    flavorDimensions "network", "env"
     productFlavors {
+        //测试环境
+        envTest {
+            dimension "env"
+            buildConfigField("boolean", "ENV_TEST", "true")
+        }
+        //生产环境
+        envProduce {
+            dimension "env"
+            buildConfigField("boolean", "ENV_TEST", "false")
+        }
         //离线版本
         standalone {
             dimension "network"

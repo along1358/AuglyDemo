@@ -1,14 +1,12 @@
 package com.along1358.AuglyDemo.service;
 
-import com.along1358.AuglyDemo.constants.ServiceConstant;
-import com.along1358.AuglyDemo.service.patch.DownloadResponseBody;
 import com.along1358.AuglyDemo.retrofit.adapter.rxjava3.RxJava3CallAdapterFactory;
 import com.along1358.AuglyDemo.retrofit.converter.gson.GsonConverterFactory;
+import com.along1358.AuglyDemo.service.patch.DownloadResponseBody;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.lang.reflect.InvocationTargetException;
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.nio.MappedByteBuffer;
@@ -143,6 +141,8 @@ public class DownloadTask {
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
+                        if(listener!=null)
+                            listener.onError(throwable.getMessage());
                     }
                 }, new Action() {
                     @Override

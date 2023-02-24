@@ -25,7 +25,7 @@ public class PatchInfoService {
     public void exec(Callback<CheckInfoResponseBody> callback) {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(ServiceConstant.BASE_URL)
+                .baseUrl(ServiceConstant.BASE_URL_LOCAL_TEST)
                 .build();
         PatchInfoService.PatchInfoRequest request = retrofit.create(PatchInfoService.PatchInfoRequest.class);
         request.getPatchInfo().enqueue(callback);
