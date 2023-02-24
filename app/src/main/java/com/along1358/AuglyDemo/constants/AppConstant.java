@@ -12,8 +12,8 @@ import java.io.File;
 public class AppConstant {
     public static final String APP_NAME = ContextUtils.getApp().getResources().getString(R.string.app_name);
 
-    //接入蒲公英SDK
-    public static final boolean USE_PGY_SDK = true;
+    //接入蒲公英SDK,否则接入XUpdateService后台
+    public static final boolean USE_PGY_SDK = false;
 
     //sharedPreferences
     public static final String SP_FILE_NAME = "sp";

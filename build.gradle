@@ -42,7 +42,6 @@ ext {
                 "rxandroid": "io.reactivex.rxjava3:rxandroid:${dependsVersion.rxandroid}",
                 "rxjava"   : "io.reactivex.rxjava3:rxjava:${dependsVersion.rxjava}",
                 "gson"     : "com.google.code.gson:gson:${dependsVersion.gson}",
-                "appupdate": "com.github.ZuoHailong:AppUpdate:${dependsVersion.AppUpdate}",
                 "tinker"   : "com.tencent.tinker:tinker-android-lib:${dependsVersion.tinker}",
                 "multidex" : "com.android.support:multidex:${dependsVersion.multidex}",
 
@@ -54,7 +53,6 @@ ext {
                 "rxandroid": "io.reactivex.rxjava3:rxandroid:${dependsVersion.rxandroid}",
                 "rxjava"   : "io.reactivex.rxjava3:rxjava:${dependsVersion.rxjava}",
                 "gson"     : "com.google.code.gson:gson:${dependsVersion.gson}",
-                "appupdate": "com.github.ZuoHailong:AppUpdate:${dependsVersion.AppUpdate}",
                 "tinker"   : "com.tencent.tinker:tinker-android-lib:${dependsVersion.tinker}",
                 "multidex" : "com.android.support:multidex:${dependsVersion.multidex}",
         ]

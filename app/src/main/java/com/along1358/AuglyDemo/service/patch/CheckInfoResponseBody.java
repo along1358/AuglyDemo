@@ -1,4 +1,4 @@
-package com.along1358.AuglyDemo.service;
+package com.along1358.AuglyDemo.service.patch;
 
 public class CheckInfoResponseBody {
     private int versionCode;
@@ -40,7 +40,7 @@ public class CheckInfoResponseBody {
 
     @Override
     public String toString() {
-        return "UpdateInfoResponseBody{" +
+        return "CheckInfoResponseBody{" +
                 "versionCode=" + versionCode +
                 ", versionName='" + versionName + '\'' +
                 ", updateContent='" + updateContent + '\'' +

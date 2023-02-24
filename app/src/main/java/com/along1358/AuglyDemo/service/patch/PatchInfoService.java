@@ -1,7 +1,6 @@
 package com.along1358.AuglyDemo.service.patch;
 
 import com.along1358.AuglyDemo.constants.ServiceConstant;
-import com.along1358.AuglyDemo.service.CheckInfoResponseBody;
 import com.along1358.AuglyDemo.retrofit.converter.gson.GsonConverterFactory;
 
 import retrofit2.Call;

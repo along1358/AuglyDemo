@@ -23,6 +23,9 @@ android {
         multiDexEnabled true
         multiDexKeepProguard file("tinker_multidexkeep.pro")
     }
+    dexOptions {
+        jumboMode = true
+    }
     signingConfigs {
         release {
             storeFile file("./keystore/release.jks")
@@ -50,10 +53,12 @@ android {
 
     flavorDimensions "network"
     productFlavors {
+        //离线版本
         standalone {
             dimension "network"
             buildConfigField("boolean", "USE_NETWORK", "false")
         }
+        //联网版本
         standard {
             dimension "network"
             buildConfigField("boolean", "USE_NETWORK", "true")
@@ -63,10 +68,6 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    dexOptions {
-        jumboMode = true
     }
 }
 

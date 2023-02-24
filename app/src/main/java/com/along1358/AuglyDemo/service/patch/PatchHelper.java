@@ -1,7 +1,6 @@
 package com.along1358.AuglyDemo.service.patch;
 
 import com.along1358.AuglyDemo.constants.AppConstant;
-import com.along1358.AuglyDemo.service.CheckInfoResponseBody;
 import com.along1358.AuglyDemo.service.DownloadListener;
 import com.along1358.AuglyDemo.tinker.TinkerHelper;
 

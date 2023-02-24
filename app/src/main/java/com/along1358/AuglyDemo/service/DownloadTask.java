@@ -8,6 +8,7 @@ import com.along1358.AuglyDemo.retrofit.converter.gson.GsonConverterFactory;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.lang.reflect.InvocationTargetException;
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.nio.MappedByteBuffer;
@@ -36,23 +37,23 @@ import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
 public class DownloadTask {
-    private DownloadInfo downloadInfo;
-    private int progress = -1;
-    private DownLoadRequest request;
+    private DownloadRequest request;
 
-    private Disposable subscribe;
+    private DownloadInfo downloadInfo;
+    protected int progress = -1;
+    protected Disposable subscribe;
 
     public DownloadTask() {
         downloadInfo = new DownloadInfo();
     }
 
-    interface DownLoadRequest {
+    private interface DownloadRequest {
         @Streaming
         @GET
         Observable<ResponseBody> download(@Header("RANGE") String start, @Url String url);
     }
 
-    public void download(String url, String path, DownloadListener listener) {
+    public void download(String baseUrl, String url, String path, DownloadListener listener) {
         downloadInfo.url = url;
         downloadInfo.savePath = path;
 
@@ -108,10 +109,10 @@ public class DownloadTask {
                 .client(builder.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-                .baseUrl(ServiceConstant.BASE_URL)
+                .baseUrl(baseUrl)
                 .build();
         if (request == null) {
-            request = retrofit.create(DownLoadRequest.class);
+            request = retrofit.create(DownloadRequest.class);
             downloadInfo.setRequest(request);
         } else {
             request = downloadInfo.getRequest();
@@ -152,7 +153,7 @@ public class DownloadTask {
             listener.onStarted();
     }
 
-    public static void writeCache(ResponseBody responseBody, File file, DownloadInfo info) throws IOException {
+    private void writeCache(ResponseBody responseBody, File file, DownloadInfo info) throws IOException {
         if (!file.getParentFile().exists())
             file.getParentFile().mkdirs();
         long allLength;
@@ -184,7 +185,7 @@ public class DownloadTask {
         }
     }
 
-    class RetryWhenNetworkException implements Function<Observable<? extends Throwable>, Observable<?>> {
+    protected class RetryWhenNetworkException implements Function<Observable<? extends Throwable>, Observable<?>> {
         //    retry次数
         private int count = 3;
         //    延迟
@@ -243,23 +244,23 @@ public class DownloadTask {
         }
     }
 
-    public class DownloadInfo {
+    private class DownloadInfo {
         public String savePath;
         public long contentLength;
         public long readLength;
         public String url;
-        private DownLoadRequest request;
+        private DownloadRequest request;
 
-        public DownLoadRequest getRequest() {
+        public DownloadRequest getRequest() {
             return request;
         }
 
-        public void setRequest(DownLoadRequest request) {
+        public void setRequest(DownloadRequest request) {
             this.request = request;
         }
     }
 
-    class DownloadInterceptor implements Interceptor {
+    protected class DownloadInterceptor implements Interceptor {
 
         private DownloadProgressListener listener;
 
