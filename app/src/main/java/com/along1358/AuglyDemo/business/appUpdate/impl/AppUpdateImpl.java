@@ -57,11 +57,6 @@ public class AppUpdateImpl implements AppUpdate {
                                                     true);
                                         }
                                     })
-                            .setOnDismissListener(new DialogInterface.OnDismissListener() {
-                                @Override
-                                public void onDismiss(DialogInterface dialog) {
-                                }
-                            })
                             .show();
                 }
             });
@@ -92,11 +87,6 @@ public class AppUpdateImpl implements AppUpdate {
                                                         false);
                                             }
                                         })
-                                .setOnDismissListener(new DialogInterface.OnDismissListener() {
-                                    @Override
-                                    public void onDismiss(DialogInterface dialog) {
-                                    }
-                                })
                                 .show();
                     }
                 }

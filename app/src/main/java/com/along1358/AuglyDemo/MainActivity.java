@@ -9,7 +9,7 @@ import com.along1358.AuglyDemo.business.appUpdate.impl.AppUpdateImpl;
 import java.util.List;
 
 public class MainActivity extends SimplePermissionActivity {
-    AppUpdateImpl appUpdate;
+    AppUpdateImpl appUpdateImpl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +22,8 @@ public class MainActivity extends SimplePermissionActivity {
         }, new PermissionCallback() {
             @Override
             public void onAllGranted() {
-                appUpdate = new AppUpdateImpl();
-                appUpdate.update();
+                appUpdateImpl = new AppUpdateImpl();
+                appUpdateImpl.update();
             }
 
             @Override
